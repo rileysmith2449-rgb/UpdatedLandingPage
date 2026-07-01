@@ -558,8 +558,8 @@
  .io-eyebrow{font-family:var(--font-label);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--primary);display:block;margin-bottom:10px}
  .io-head h3{font-size:clamp(22px,2.4vw,30px);font-weight:700;letter-spacing:-0.02em}
  .io-head p{font-size:14px;color:var(--text-muted);margin-top:8px}
- .io-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr)}
- .io-track::before{content:"";position:absolute;top:21px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,#22C55E,#F59E0B,#5C7CFA,#6E8BFF,#8B93A9);border-radius:2px}
+ .io-track{position:relative;display:grid;grid-template-columns:repeat(6,1fr)}
+ .io-track::before{content:"";position:absolute;top:21px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,#22C55E,#F59E0B,#14B8A6,#5C7CFA,#6E8BFF,#8B93A9);border-radius:2px}
  .io-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 10px;position:relative}
  .io-node{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-label);font-size:16px;font-weight:700;color:#fff;background:var(--ac);box-shadow:0 0 0 5px var(--bg),0 8px 20px -6px var(--ac);position:relative;z-index:2}
  .io-card{margin-top:18px}
@@ -866,7 +866,6 @@
  <div class="nav-links">
  <a href="index.html">Overview</a>
  <a href="future.html" aria-current="page" style="color:var(--primary)">Future Vision</a>
- <a href="partners.html">Partners</a>
  <a href="pricing.html">Pricing</a>
  <a href="download.html">Download</a>
  </div>
@@ -939,10 +938,23 @@
  </div>
 </section>
 <section class="roadmap" style="padding-top:0">
- <div class="container" style="text-align:center;padding:32px 0">
-  <p style="font-size:15px;color:var(--text-secondary);margin-bottom:14px">See the tier-by-tier roadmap for where your next dollar should go — and the accounts we recommend for each step.</p>
-  <a href="partners.html" class="btn btn-primary" style="display:inline-flex">See the roadmap &amp; partners <span class="arrow">→</span></a>
+<div class="container">
+ <div class="invest-order">
+  <div class="io-head">
+   <span class="io-eyebrow">The roadmap</span>
+   <h3>Where your next dollar should go</h3>
+   <p>Fill each tier before moving to the next — Vision shows you which one is up.</p>
+  </div>
+  <div class="io-track">
+   <div class="io-step" style="--ac:#22C55E"><div class="io-node">1</div><div class="io-card"><div class="io-where">401(k) match</div><div class="io-note">Free money from your employer.</div><span class="io-tag">100% ROI</span></div></div>
+   <div class="io-step" style="--ac:#F59E0B"><div class="io-node">2</div><div class="io-card"><div class="io-where">High-interest debt</div><div class="io-note">Pay off anything above ~10%.</div><span class="io-tag">10%+</span></div></div>
+   <div class="io-step" style="--ac:#14B8A6"><div class="io-node">3</div><div class="io-card"><div class="io-where">HSA</div><div class="io-note">Triple tax advantage — if you have an HDHP.</div><span class="io-tag">Triple tax</span></div></div>
+   <div class="io-step" style="--ac:#5C7CFA"><div class="io-node">4</div><div class="io-card"><div class="io-where">Roth IRA</div><div class="io-note">Tax-free growth, up to the limit.</div><span class="io-tag">$7,000/yr</span></div></div>
+   <div class="io-step" style="--ac:#6E8BFF"><div class="io-node">5</div><div class="io-card"><div class="io-where">401(k) — again</div><div class="io-note">Max it out beyond the match.</div><span class="io-tag">$23,500</span></div></div>
+   <div class="io-step" style="--ac:#8B93A9"><div class="io-node">6</div><div class="io-card"><div class="io-where">Brokerage</div><div class="io-note">Taxed, but flexible. No cap.</div><span class="io-tag">Flexible</span></div></div>
+  </div>
  </div>
+</div>
 </section>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
@@ -958,7 +970,6 @@
  <h5>Product</h5>
  <ul>
  <li><a href="index.html">Overview</a></li>
- <li><a href="partners.html">Partners</a></li>
  <li><a href="https://demo.visionfinance.app">Demo Site</a></li>
  </ul>
  </div>
