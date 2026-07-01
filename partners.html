@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners · Vision Finance</title>
+<meta name="description" content="Vision Partners — the accounts and platforms we actually use ourselves for high-yield savings, HSAs, and self-directed investing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+ /* ═══════════════════════════════════════════════════════════
+    VISION DESIGN SYSTEM · v3
+    Brand: Vision Blue #5C7CFA (periwinkle) · Positive/gains: Teal #14B8A6
+    ═══════════════════════════════════════════════════════════ */
+
+ :root[data-theme="dark"]{
+  --bg:#0A0E1F;--bg-elevated:#0C1124;--surface:#151B30;--surface-2:#1B2236;--surface-3:#232B45;
+  --border:#232B45;--border-strong:#2E3854;--border-faint:rgba(35,43,69,0.5);
+  --primary:#5C7CFA;--primary-hover:#6E8BFF;--primary-soft:#171E3B;--primary-glow:rgba(92,124,250,0.45);--ring:rgba(92,124,250,0.45);
+  --text:#F5F7FF;--text-secondary:#B5BDD0;--text-muted:#8B93A9;--text-faint:#5C6479;
+  --positive:#14B8A6;--positive-soft:rgba(20,184,166,0.12);
+  --up:#22C55E;--negative:#EF4444;--negative-soft:rgba(239,68,68,0.12);
+  --warning:#F59E0B;--warning-soft:rgba(245,158,11,0.12);--info:#5C7CFA;
+  --font-sans:'Geist','Helvetica Neue',Arial,sans-serif;
+  --font-label:'Geist','Helvetica Neue',Arial,sans-serif;
+  --gutter:32px;--section:60px;--maxw:1280px;
+  color-scheme:dark;
+ }
+ :root[data-theme="light"]{
+  --bg:#F6F7FB;--bg-elevated:#FFFFFF;--surface:#FFFFFF;--surface-2:#EFF2F8;--surface-3:#E7EBF4;
+  --border:#E3E7F0;--border-strong:#CDD4E4;--border-faint:rgba(227,231,240,0.6);
+  --primary:#2563EB;--primary-hover:#1D4ED8;--primary-soft:#DBEAFE;--primary-glow:rgba(37,99,235,0.25);--ring:rgba(37,99,235,0.35);
+  --text:#14182A;--text-secondary:#4C5573;--text-muted:#828BA6;--text-faint:#A8AFC4;
+  --positive:#2563EB;--positive-soft:rgba(37,99,235,0.12);
+  --up:#2563EB;--negative:#EF4444;--warning:#F59E0B;--info:#5C7CFA;
+  --font-sans:'Geist','Helvetica Neue',Arial,sans-serif;
+  --font-label:'Geist','Helvetica Neue',Arial,sans-serif;
+  --gutter:32px;--section:60px;--maxw:1280px;
+  color-scheme:light;
+ }
+
+ *{box-sizing:border-box;margin:0;padding:0}
+ html{scroll-behavior:smooth}
+ body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-weight:400;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:radial-gradient(1100px 600px at 82% -8%,rgba(92,124,250,0.12),transparent 60%),radial-gradient(900px 500px at 8% 5%,rgba(92,124,250,0.07),transparent 60%);background-attachment:fixed}
+ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.3;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.08 0 0 0 0 0.12 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
+ .container{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:2}
+ img{max-width:100%;display:block}
+ button,a{font-family:inherit}
+ a{color:inherit;text-decoration:none}
+
+ /* Logo */
+ .v-logo-mark{display:inline-flex;align-items:center;width:30px;height:30px;color:var(--text);vertical-align:middle}
+ .v-logo-mark svg{width:100%;height:100%;display:block}
+ .v-logo-div{display:inline-block;width:1px;height:18px;background:var(--border-strong);margin:0 14px;vertical-align:middle}
+ .v-logo-text{font-family:var(--font-sans);font-weight:500;font-size:16px;letter-spacing:0.32em;text-transform:uppercase;color:var(--text);vertical-align:middle}
+ .nav-brand{display:inline-flex;align-items:center}
+
+ /* Nav */
+ .nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(24px) saturate(160%);border-bottom:1px solid var(--border)}
+ .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:16px var(--gutter)}
+ .nav-brand{display:flex;align-items:center}
+ .nav-brand .v-logo-mark{width:50px;height:50px}
+ .nav-brand .v-logo-text{font-size:27px}
+ .nav-brand .v-logo-div{height:28px;margin:0 16px}
+ .nav-links{display:flex;gap:36px;align-items:center}
+ .nav-links a{font-size:14px;color:var(--text-muted);font-weight:500;transition:color 0.2s}
+ .nav-links a:hover{color:var(--text)}
+ .nav-cta{display:flex;gap:10px;align-items:center}
+ .nav-theme{position:fixed;bottom:22px;right:22px;z-index:200;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--surface);color:var(--text);border:1px solid var(--border-strong);box-shadow:0 10px 28px -10px rgba(20,24,42,0.30);transition:transform 0.15s,border-color 0.2s,background 0.2s}
+ .nav-theme:hover{color:var(--primary);border-color:var(--primary);transform:translateY(-2px)}
+ .nav-theme svg{width:20px;height:20px}
+ .nav-ig{position:fixed;bottom:22px;left:22px;z-index:200;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border:none;box-shadow:0 8px 24px -8px rgba(220,39,67,0.55);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
+ .nav-ig:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(220,39,67,0.7)}
+ .nav-ig svg{width:24px;height:24px}
+ .nav-theme .ic-moon{display:none}
+ :root[data-theme="light"] .nav-theme .ic-sun{display:none}
+ :root[data-theme="light"] .nav-theme .ic-moon{display:block}
+
+ .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;font-size:14px;font-weight:600;border:1px solid transparent;cursor:pointer;transition:all 0.2s;font-family:inherit;text-decoration:none;border-radius:10px}
+ .btn-ghost{background:transparent;color:var(--text-secondary);border-color:var(--border-strong)}
+ .btn-ghost:hover{color:var(--text);border-color:var(--text-muted);background:var(--surface)}
+ .btn-primary{background:var(--primary);color:#FFFFFF;border-color:var(--primary);font-weight:700;box-shadow:0 4px 14px -4px var(--primary-glow)}
+ .btn-primary:hover{background:var(--primary-hover);border-color:var(--primary-hover);box-shadow:0 10px 28px -8px var(--primary-glow);transform:translateY(-1px)}
+
+ /* Hero */
+ .pg-hero{padding:96px 0 22px;position:relative;text-align:center;overflow:hidden}
+ .pg-hero .container{position:relative;z-index:2}
+ .pg-glow{position:absolute;left:0;right:0;top:0;height:440px;z-index:1;background:radial-gradient(60% 70% at 50% 0%,var(--primary-glow),transparent 72%);opacity:.5;pointer-events:none}
+ .pg-eyebrow{font-family:var(--font-label);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:600;color:var(--primary);margin-bottom:14px}
+ .pg-hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.07;letter-spacing:-.02em;font-weight:700;color:var(--text);max-width:20ch;margin:0 auto}
+ .pg-hero h1 em{font-style:normal;color:var(--primary)}
+ .pg-lede{max-width:640px;margin:18px auto 0;color:var(--text-secondary);font-size:1.05rem;line-height:1.6}
+
+ /* FTC disclosure block */
+ .ftc-block{margin:36px 0 0}
+ .ftc-inner{max-width:820px;margin:0 auto;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;gap:14px;align-items:flex-start}
+ .ftc-icon{flex:none;width:26px;height:26px;border-radius:50%;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center;font-family:var(--font-label);font-weight:700;font-size:13px;margin-top:2px}
+ .ftc-body{font-size:13px;color:var(--text-muted);line-height:1.6}
+ .ftc-body strong{color:var(--text);font-weight:600}
+
+ /* Section headings shared */
+ .section-title{font-family:var(--font-sans);font-weight:700;font-size:clamp(28px,3.2vw,40px);letter-spacing:-0.025em;line-height:1.1;color:var(--text);margin-bottom:14px}
+ .section-title em{font-style:normal;color:var(--primary-hover)}
+ .section-sub{color:var(--text-secondary);font-size:16px;line-height:1.65;max-width:640px}
+
+ /* Partners grid */
+ .partners{padding:56px 0}
+ .partners-head{text-align:center;margin-bottom:40px}
+ .partners-head .section-sub{margin:14px auto 0}
+ .partner-group{margin-top:44px}
+ .partner-group:first-of-type{margin-top:0}
+ .partner-group-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+ .partner-group-eyebrow{font-family:var(--font-label);font-size:11px;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:0.14em;padding:5px 11px;background:var(--primary-soft);border:1px solid rgba(92,124,250,0.2);border-radius:20px}
+ .partner-group-hint{font-size:13.5px;color:var(--text-muted)}
+
+ .partner-card{background:var(--surface);border:1px solid var(--border-strong);border-radius:20px;padding:34px 34px;display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s}
+ .partner-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+ .partner-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),transparent 80%);opacity:0.85}
+ .pc-copy h3{font-family:var(--font-sans);font-weight:700;font-size:clamp(22px,2.4vw,28px);letter-spacing:-0.02em;color:var(--text);margin-bottom:6px}
+ .pc-tagline{color:var(--primary-hover);font-size:15px;font-weight:600;margin-bottom:14px}
+ .pc-desc{color:var(--text-secondary);font-size:15px;line-height:1.65;margin-bottom:18px}
+ .pc-desc + .pc-desc{margin-top:-8px}
+ .pc-note{font-family:var(--font-label);font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-top:6px}
+ .pc-note::before{content:'★ ';color:var(--primary)}
+ .pc-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+ .pc-stat{padding:14px;background:var(--surface-2);border:1px solid var(--border);border-radius:10px}
+ .pc-stat-label{font-family:var(--font-label);font-size:10px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+ .pc-stat-val{font-family:var(--font-sans);font-weight:700;font-size:17px;letter-spacing:-0.01em;color:var(--text)}
+ .pc-stat-val.positive{color:var(--positive)}
+ .pc-cta{display:flex;flex-direction:column;gap:10px}
+ .pc-cta .btn{width:100%;justify-content:center}
+ .pc-cta-note{font-size:12px;color:var(--text-faint);text-align:center;letter-spacing:0.02em}
+
+ @media (max-width:840px){
+  .partner-card{grid-template-columns:1fr;gap:26px;padding:28px 24px}
+ }
+
+ /* Roadmap ("where your next dollar should go") — moved from future.html */
+ .roadmap-section{padding:60px 0 12px;border-top:1px solid var(--border);margin-top:64px}
+ .invest-order{max-width:1080px;margin:0 auto}
+ .io-head{text-align:center;margin-bottom:38px}
+ .io-eyebrow{display:inline-block;font-family:var(--font-label);font-size:10px;color:var(--primary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px;padding:5px 11px;background:var(--primary-soft);border:1px solid rgba(92,124,250,0.2);border-radius:6px;font-weight:600}
+ .io-head h3{font-size:clamp(22px,2.4vw,30px);font-weight:700;letter-spacing:-0.02em}
+ .io-head p{font-size:14px;color:var(--text-muted);margin-top:8px}
+ .io-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr)}
+ .io-track::before{content:"";position:absolute;top:21px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,#22C55E,#F59E0B,#5C7CFA,#6E8BFF,#8B93A9);border-radius:2px}
+ .io-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 10px;position:relative}
+ .io-node{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-label);font-size:16px;font-weight:700;color:#fff;background:var(--ac);box-shadow:0 0 0 5px var(--bg),0 8px 20px -6px var(--ac);position:relative;z-index:2}
+ .io-card{margin-top:18px}
+ .io-where{font-size:15px;font-weight:700;color:var(--text)}
+ .io-note{font-size:12.5px;color:var(--text-muted);margin:5px auto 0;line-height:1.45;max-width:20ch}
+ .io-tag{display:inline-block;margin-top:11px;font-family:var(--font-label);font-size:10.5px;font-weight:600;color:var(--ac);background:color-mix(in srgb,var(--ac) 13%,transparent);border:1px solid color-mix(in srgb,var(--ac) 32%,transparent);border-radius:20px;padding:4px 11px}
+ @media(max-width:760px){
+  .io-track{grid-template-columns:1fr;gap:12px}
+  .io-track::before{display:none}
+  .io-step{flex-direction:row;text-align:left;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px}
+  .io-node{width:36px;height:36px;font-size:14px;box-shadow:none;flex:none}
+  .io-card{margin-top:0}
+  .io-note{max-width:none;margin:4px 0 0}
+ }
+
+ /* Long disclosure at page bottom */
+ .long-disclosure{padding:52px 0 24px;border-top:1px solid var(--border);margin-top:56px}
+ .long-disclosure-inner{max-width:820px;margin:0 auto;font-size:13px;color:var(--text-muted);line-height:1.7}
+ .long-disclosure-inner h4{font-family:var(--font-label);font-size:11px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:14px}
+ .long-disclosure-inner p + p{margin-top:12px}
+
+ /* Footer (matches future.html pattern) */
+ footer{background:var(--bg-elevated);border-top:1px solid var(--border);padding:64px 0 32px}
+ .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid var(--border);margin-bottom:32px}
+ .foot-brand p{color:var(--text-muted);font-size:14px;line-height:1.6;max-width:340px;margin-top:14px}
+ .foot-col h5{font-family:var(--font-label);font-size:10px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:18px}
+ .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+ .foot-col a{color:var(--text-secondary);font-size:14px;transition:color 0.2s}
+ .foot-col a:hover{color:var(--text)}
+ .foot-bottom{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-label);font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.16em;gap:24px;flex-wrap:wrap}
+ .foot-disclaimer{margin-top:24px;padding-top:24px;border-top:1px dashed var(--border);font-size:12px;color:var(--text-faint);line-height:1.6;max-width:880px;text-transform:none;letter-spacing:0;font-family:var(--font-sans)}
+
+ /* Mobile nav */
+ .nav-toggle{display:none;background:none;border:0;padding:0;margin-right:12px;cursor:pointer;width:38px;height:38px;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--text)}
+ .nav-toggle span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:transform .28s ease,opacity .2s ease}
+ .nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+ .nav.open .nav-toggle span:nth-child(2){opacity:0}
+ .nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+ @media(max-width:960px){
+  .nav-toggle{display:flex}
+  .nav-brand{margin-right:auto}
+  .nav-links{display:flex !important;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg-elevated);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4px 0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .32s ease,opacity .25s ease,visibility .25s ease;box-shadow:0 26px 50px -28px rgba(0,0,0,.55)}
+  .nav.open .nav-links{max-height:75vh;opacity:1;visibility:visible}
+  .nav-links a{padding:14px var(--gutter);font-size:15.5px;color:var(--text);border-bottom:1px solid var(--border-faint)}
+  .nav-links a:last-child{border-bottom:0}
+  .nav-cta .btn-primary{padding:9px 14px;font-size:13.5px}
+ }
+ @media(max-width:520px){.nav-cta .btn-primary{padding:8px 12px;font-size:12.5px}}
+ @media(max-width:960px){
+  :root{--gutter:20px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:32px}
+ }
+ @media(max-width:520px){
+  .foot-top{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+ }
+</style>
+</head>
+<body>
+<!-- Inline SVG mark, matches other pages -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+ <defs>
+  <symbol id="vision-mark" viewBox="0 0 100 100">
+   <g transform="translate(50,50)" fill="none" stroke="currentColor" stroke-linecap="round">
+    <circle cx="0" cy="0" r="22" stroke-width="4"/>
+    <ellipse cx="0" cy="0" rx="36" ry="14.5" stroke-width="3.2" transform="rotate(-22)"/>
+    <circle cx="33" cy="-13" r="4.5" fill="currentColor" stroke="none"/>
+   </g>
+  </symbol>
+ </defs>
+</svg>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="nav">
+ <div class="nav-inner">
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a href="index.html" class="nav-brand" aria-label="Vision Finance, home">
+   <span class="v-logo-mark"><svg><use href="#vision-mark"/></svg></span><span class="v-logo-div"></span><span class="v-logo-text">VISION</span>
+  </a>
+  <div class="nav-links">
+   <a href="index.html">Overview</a>
+   <a href="future.html">Future Vision</a>
+   <a href="partners.html" aria-current="page" style="color:var(--primary)">Partners</a>
+   <a href="pricing.html">Pricing</a>
+   <a href="security.html">Security</a>
+   <a href="about.html">About</a>
+   <a href="download.html">Download</a>
+  </div>
+  <div class="nav-cta">
+   <a href="https://visionfinance.app/login" class="btn btn-ghost">Sign in</a>
+   <a href="https://visionfinance.app/vfin-signup" class="btn btn-primary">Start free <span class="arrow">→</span></a>
+  </div>
+ </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="pg-hero">
+ <div class="pg-glow" aria-hidden="true"></div>
+ <div class="container">
+  <div class="pg-eyebrow">Partners</div>
+  <h1>The accounts we <em>actually use.</em></h1>
+  <p class="pg-lede">
+   Vision doesn't hold your money — the platforms below do. These are the ones we'd open ourselves for high-yield savings, HSAs, and self-directed investing. Fewer, better picks, not an affiliate wall.
+  </p>
+
+  <!-- FTC affiliate disclosure — visible above the fold, per FTC Endorsement Guides -->
+  <div class="ftc-block">
+   <div class="ftc-inner">
+    <div class="ftc-icon" aria-hidden="true">i</div>
+    <div class="ftc-body">
+     <strong>Affiliate disclosure.</strong> Some links on this page are partnerships — if you open an account through one of them, Vision may earn a commission at no additional cost to you. We only list products we'd use ourselves, and editorial decisions here are independent of any partner relationship. See our <a href="terms.html" style="color:var(--primary);text-decoration:underline">Terms</a> for details.
+    </div>
+   </div>
+  </div>
+ </div>
+</header>
+
+<!-- ═══════════════ PARTNER CARDS ═══════════════ -->
+<section class="partners">
+ <div class="container">
+
+  <!-- Emergency Fund / HYSA — Raisin -->
+  <div class="partner-group">
+   <div class="partner-group-head">
+    <span class="partner-group-eyebrow">Emergency Fund · HYSA</span>
+    <span class="partner-group-hint">Step 0 — the tier before your 401(k) match.</span>
+   </div>
+   <article class="partner-card">
+    <div class="pc-copy">
+     <h3>Raisin</h3>
+     <p class="pc-tagline">One login. Dozens of top-yield FDIC-insured banks.</p>
+     <p class="pc-desc">
+      Raisin is a marketplace that spreads your savings across a network of community banks and credit unions, so you can chase best-in-class APYs without opening (or moving) individual accounts. Each partner bank carries its own $250K FDIC insurance — deposits are held at the banks, not at Raisin.
+     </p>
+     <p class="pc-note">Why we like it: no monthly fees, no minimum balance requirements, and rate transparency you don't get from a big-bank savings account.</p>
+    </div>
+    <div class="pc-cta-wrap">
+     <div class="pc-stats">
+      <div class="pc-stat"><div class="pc-stat-label">APY range</div><div class="pc-stat-val positive">4.00–5.00%</div></div>
+      <div class="pc-stat"><div class="pc-stat-label">Minimum</div><div class="pc-stat-val">$1</div></div>
+      <div class="pc-stat"><div class="pc-stat-label">Monthly fees</div><div class="pc-stat-val">$0</div></div>
+      <div class="pc-stat"><div class="pc-stat-label">FDIC coverage</div><div class="pc-stat-val">$250k / bank</div></div>
+     </div>
+     <div class="pc-cta">
+      <a href="TODO_RAISIN_URL" rel="sponsored noopener" target="_blank" class="btn btn-primary" data-partner="raisin" data-category="hysa">Open a Raisin account <span class="arrow">→</span></a>
+      <div class="pc-cta-note">Sponsored link · Vision may earn a commission</div>
+     </div>
+    </div>
+   </article>
+  </div>
+
+  <!-- HSA — Fidelity -->
+  <div class="partner-group">
+   <div class="partner-group-head">
+    <span class="partner-group-eyebrow">HSA · Triple tax advantage</span>
+    <span class="partner-group-hint">If you have a High-Deductible Health Plan, this is the most tax-advantaged account you can open.</span>
+   </div>
+   <article class="partner-card">
+    <div class="pc-copy">
+     <h3>Fidelity HSA</h3>
+     <p class="pc-tagline">The only major HSA that lets you invest every dollar from day one.</p>
+     <p class="pc-desc">
+      Most HSA providers make you keep $1,000–$2,000 in cash as a "spend floor" before you can invest — money that quietly loses purchasing power to inflation. Fidelity's HSA doesn't. Every contribution can go straight into low-cost index funds if that's what you want.
+     </p>
+     <p class="pc-note">Why we like it: same fund lineup and pricing as a Fidelity brokerage, triple tax advantage (pre-tax in, tax-free growth, tax-free out for qualified medical), and the balance rolls forward forever — no use-it-or-lose-it.</p>
+    </div>
+    <div class="pc-cta-wrap">
+     <div class="pc-stats">
+      <div class="pc-stat"><div class="pc-stat-label">Account fees</div><div class="pc-stat-val positive">$0</div></div>
+      <div class="pc-stat"><div class="pc-stat-label">Invest threshold</div><div class="pc-stat-val positive">$0</div></div>
+      <div class="pc-stat"><div class="pc-stat-label">Stock/ETF trades</div><div class="pc-stat-val">$0</div></div>
+      <div class="pc-stat"><div class="pc-stat-label">2026 contribution</div><div class="pc-stat-val">$4,300 / $8,550</div></div>
+     </div>
+     <div class="pc-cta">
+      <a href="TODO_FIDELITY_HSA_URL" rel="sponsored noopener" target="_blank" class="btn btn-primary" data-partner="fidelity_hsa" data-category="hsa">Open a Fidelity HSA <span class="arrow">→</span></a>
+      <div class="pc-cta-note">Sponsored link · Vision may earn a commission</div>
+     </div>
+    </div>
+   </article>
+  </div>
+
+  <!-- Self-Directed Brokerage — Interactive Brokers -->
+  <div class="partner-group">
+   <div class="partner-group-head">
+    <span class="partner-group-eyebrow">Self-Directed Brokerage</span>
+    <span class="partner-group-hint">For DIY investors who want professional-grade execution and multi-currency support.</span>
+   </div>
+   <article class="partner-card">
+    <div class="pc-copy">
+     <h3>Interactive Brokers</h3>
+     <p class="pc-tagline">Professional-grade platform. Retail-grade pricing.</p>
+     <p class="pc-desc">
+      IBKR runs the same execution and margin infrastructure the pros use, at commission rates that beat every retail broker. Best-in-class access to international markets (150+ exchanges in 33 countries), true multi-currency accounts if you hold foreign assets, and margin rates that are typically half of what Robinhood or Schwab charge.
+     </p>
+     <p class="pc-note">Why we like it: transparent pricing, real tax-lot control (matches Vision's sell simulator), and margin rates in the ~5–6% range vs 10%+ elsewhere.</p>
+    </div>
+    <div class="pc-cta-wrap">
+     <div class="pc-stats">
+      <div class="pc-stat"><div class="pc-stat-label">US stock/ETF comm.</div><div class="pc-stat-val positive">$0</div></div>
+      <div class="pc-stat"><div class="pc-stat-label">Margin rate (from)</div><div class="pc-stat-val">~5.83%</div></div>
+      <div class="pc-stat"><div class="pc-stat-label">Markets</div><div class="pc-stat-val">150+ / 33 countries</div></div>
+      <div class="pc-stat"><div class="pc-stat-label">Account minimum</div><div class="pc-stat-val positive">$0</div></div>
+     </div>
+     <div class="pc-cta">
+      <a href="TODO_IB_URL" rel="sponsored noopener" target="_blank" class="btn btn-primary" data-partner="interactive_brokers" data-category="brokerage">Open an IB account <span class="arrow">→</span></a>
+      <div class="pc-cta-note">Sponsored link · Vision may earn a commission</div>
+     </div>
+    </div>
+   </article>
+  </div>
+
+ </div>
+</section>
+
+<!-- ═══════════════ ROADMAP (moved from future.html) ═══════════════ -->
+<section class="roadmap-section">
+ <div class="container">
+  <div class="invest-order">
+   <div class="io-head">
+    <span class="io-eyebrow">The roadmap</span>
+    <h3>Where your next dollar should go</h3>
+    <p>Fill each tier before moving to the next — Vision shows you which one is up.</p>
+   </div>
+   <div class="io-track">
+    <div class="io-step" style="--ac:#22C55E"><div class="io-node">1</div><div class="io-card"><div class="io-where">401(k) match</div><div class="io-note">Free money from your employer.</div><span class="io-tag">100% ROI</span></div></div>
+    <div class="io-step" style="--ac:#F59E0B"><div class="io-node">2</div><div class="io-card"><div class="io-where">High-interest debt</div><div class="io-note">Pay off anything above ~10%.</div><span class="io-tag">10%+</span></div></div>
+    <div class="io-step" style="--ac:#5C7CFA"><div class="io-node">3</div><div class="io-card"><div class="io-where">Roth IRA</div><div class="io-note">Tax-free growth, up to the limit.</div><span class="io-tag">$7,000/yr</span></div></div>
+    <div class="io-step" style="--ac:#6E8BFF"><div class="io-node">4</div><div class="io-card"><div class="io-where">401(k) — again</div><div class="io-note">Max it out beyond the match.</div><span class="io-tag">$23,500</span></div></div>
+    <div class="io-step" style="--ac:#8B93A9"><div class="io-node">5</div><div class="io-card"><div class="io-where">Brokerage</div><div class="io-note">Taxed, but flexible. No cap.</div><span class="io-tag">Flexible</span></div></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ═══════════════ LONGER DISCLOSURE ═══════════════ -->
+<section class="long-disclosure">
+ <div class="container">
+  <div class="long-disclosure-inner">
+   <h4>Full disclosures</h4>
+   <p>
+    <strong style="color:var(--text)">Editorial independence.</strong> Vision selects partners we would open accounts with ourselves. We do not accept payment for placement on this page, and we do not include partners solely because they offer higher commissions. If a better option comes along, we swap it in — commission structure has no bearing on which platforms we recommend.
+   </p>
+   <p>
+    <strong style="color:var(--text)">Compensation.</strong> Some of the links on this page are affiliate links. If you open an account with a listed partner, Vision Financial, Inc. may receive a commission or referral bonus at no additional cost to you. Commission amounts vary by partner and product, and are subject to change.
+   </p>
+   <p>
+    <strong style="color:var(--text)">Not financial advice.</strong> The information on this page is provided for educational purposes only and does not constitute personalized investment, tax, or legal advice. Interest rates, APYs, contribution limits, and margin rates are current as of publication and subject to change. Consult a qualified financial advisor and review each partner's own disclosures before opening an account. Investing involves risk, including loss of principal.
+   </p>
+   <p>
+    <strong style="color:var(--text)">FDIC / SIPC coverage.</strong> Deposit and investment protection is provided by the partner platform, not by Vision Financial, Inc. Standard FDIC coverage applies at each partner bank up to $250,000 per depositor. SIPC coverage applies at brokerage partners up to $500,000 (including $250,000 for cash). Excess coverage varies by partner.
+   </p>
+  </div>
+ </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+ <div class="container">
+  <div class="foot-top">
+   <div class="foot-brand">
+    <span class="v-logo-mark"><svg><use href="#vision-mark"/></svg></span><span class="v-logo-div"></span><span class="v-logo-text">VISION</span>
+    <p>Tax-smart money for households who think long-term. One app for your net worth, your budget, and the tax bill before you sell.</p>
+   </div>
+
+   <div class="foot-col">
+    <h5>Product</h5>
+    <ul>
+     <li><a href="index.html">Overview</a></li>
+     <li><a href="partners.html">Partners</a></li>
+     <li><a href="https://demo.visionfinance.app">Demo</a></li>
+    </ul>
+   </div>
+
+   <div class="foot-col">
+    <h5>Company</h5>
+    <ul>
+     <li><a href="about.html">About</a></li>
+     <li><a href="future.html">Roadmap</a></li>
+    </ul>
+   </div>
+
+   <div class="foot-col">
+    <h5>Trust</h5>
+    <ul>
+     <li><a href="security.html">Security</a></li>
+     <li><a href="https://visionfinance.app/privacy">Privacy Policy</a></li>
+     <li><a href="https://visionfinance.app/terms">Terms of Service</a></li>
+     <li><a href="https://visionfinance.app/accessibility">Accessibility</a></li>
+    </ul>
+   </div>
+  </div>
+
+  <div class="foot-bottom">
+   <div>Vision Financial, Inc.</div>
+   <div>Built with care · Plaid · Stripe · Vercel</div>
+  </div>
+
+  <div class="foot-disclaimer">
+   Vision is a financial tracking and education tool. Vision is not a registered investment adviser, broker-dealer, or financial planner. Information shown is for educational purposes only and is not personalized investment, tax, or legal advice. Consult a qualified professional before making investment or tax decisions.
+  </div>
+ </div>
+</footer>
+
+<!-- Floating buttons -->
+<button class="nav-theme" onclick="toggleTheme()" aria-label="Toggle light or dark theme" title="Toggle theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+<a class="nav-ig" href="https://www.instagram.com/visionfinance.app/" target="_blank" rel="noopener" aria-label="Follow Vision on Instagram"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+
+<script>
+ // Theme toggle (shared with other pages via localStorage key 'vision-theme-v2')
+ const root = document.documentElement;
+ const savedTheme = localStorage.getItem('vision-theme-v2');
+ if (savedTheme) root.setAttribute('data-theme', savedTheme);
+ function toggleTheme(){
+  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('vision-theme-v2', next);
+ }
+
+ // Scroll reveal (progressive enhancement)
+ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const targets = document.querySelectorAll('section > .container > *, .partner-card');
+  targets.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.7s, transform 0.7s'; });
+  const io = new IntersectionObserver(entries => {
+   entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity = ''; e.target.style.transform = ''; io.unobserve(e.target); }
+   });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  targets.forEach(el => io.observe(el));
+ }
+
+ // Mobile nav toggle
+ (function(){
+  var t=document.querySelector('.nav-toggle'); if(!t) return;
+  var nav=t.closest('.nav');
+  function close(){ nav.classList.remove('open'); t.setAttribute('aria-expanded','false'); }
+  t.addEventListener('click',function(e){ e.stopPropagation(); var o=nav.classList.toggle('open'); t.setAttribute('aria-expanded',o?'true':'false'); });
+  nav.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('click',close); });
+  document.addEventListener('click',function(e){ if(nav.classList.contains('open') && !nav.contains(e.target)) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+ })();
+
+ // Partner outbound tracking — fires a PostHog event if PostHog is loaded,
+ // otherwise no-ops. Also emits a window CustomEvent so any GTM / Sentry / Vercel
+ // Analytics wrapper can pick it up.
+ (function(){
+  document.querySelectorAll('a[data-partner]').forEach(function(a){
+   a.addEventListener('click', function(){
+    var partner = a.getAttribute('data-partner');
+    var category = a.getAttribute('data-category');
+    try {
+     if (window.posthog && typeof window.posthog.capture === 'function') {
+      window.posthog.capture('partner_click', { partner: partner, category: category, href: a.href });
+     }
+    } catch(e){}
+    try {
+     window.dispatchEvent(new CustomEvent('vision:partner_click', { detail: { partner: partner, category: category, href: a.href } }));
+    } catch(e){}
+   });
+  });
+ })();
+</script>
+</body>
+</html>
