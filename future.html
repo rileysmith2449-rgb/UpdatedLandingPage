@@ -902,6 +902,12 @@
  <p class="pg-lede">See where steady investing can take you over time &mdash; then follow the roadmap for where your next dollar should go.</p>
  </div>
 </header>
+<style>
+.ira-toggle{display:flex;gap:6px;margin-top:6px}
+.ira-opt{flex:1;padding:8px 0;font:inherit;font-size:13px;font-weight:600;border-radius:8px;cursor:pointer;border:1px solid var(--border-strong);background:transparent;color:var(--text-secondary);transition:background .15s,color .15s,border-color .15s}
+.ira-opt.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.ira-select{margin-top:6px;width:100%;padding:8px 10px;font:inherit;font-size:14px;color:var(--text);background:var(--surface);border:1px solid var(--border-strong);border-radius:8px;cursor:pointer}
+</style>
 <section id="roadmap" class="roadmap">
  <div class="container roadmap-inner">
   <div class="roadmap-copy">
@@ -912,6 +918,7 @@
     <div><span class="rs-k">Projected balance</span><span class="rs-v" id="irTotal">$0</span></div>
     <div><span class="rs-k">You contribute</span><span class="rs-v con" id="irContrib">$0</span></div>
     <div><span class="rs-k">Growth</span><span class="rs-v grw" id="irGrowth">+$0</span></div>
+    <div><span class="rs-k" id="irTaxK">Tax savings (Traditional)</span><span class="rs-v" id="irTax" style="color:#22C55E">$0</span></div>
    </div>
   </div>
   <div class="roadmap-widget">
@@ -944,9 +951,11 @@
     <div class="rw-ctrl"><div class="rw-top"><span>Time horizon</span><b id="irvYr">30 yrs</b></div><input type="range" id="irYr" min="5" max="40" step="1" value="30"></div>
     <div class="rw-ctrl rate"><div class="rw-top"><span>Expected annual return</span><b id="irvRate">8%</b></div><input type="range" id="irRate" min="3" max="12" step="0.5" value="8"></div>
     <div class="rw-ctrl"><div class="rw-top"><span>Your annual income (optional)</span><b id="irvInc">$0</b></div><input type="range" id="irInc" min="0" max="500000" step="5000" value="0"></div>
+    <div class="rw-ctrl"><div class="rw-top"><span>IRA type</span></div><div class="ira-toggle"><button type="button" class="ira-opt active" data-ira="trad">Traditional</button><button type="button" class="ira-opt" data-ira="roth">Roth</button></div></div>
+    <div class="rw-ctrl"><div class="rw-top"><span>Marginal tax rate</span></div><select id="irTaxRate" class="ira-select"><option value="10">10%</option><option value="12">12%</option><option value="22" selected>22%</option><option value="24">24%</option><option value="32">32%</option><option value="35">35%</option><option value="37">37%</option></select></div>
    </div>
    <div id="irVerdict" class="rw-verdict" hidden></div>
-   <p class="rw-note">Assumes monthly compounding and steady contributions. The S&amp;P 500 has returned ~10%/yr before inflation (~7% after) over the long run; future returns are not guaranteed and inflation reduces the real value of these figures. A projection for planning — not investment advice.</p>
+   <p class="rw-note">Assumes monthly compounding and steady contributions. The S&amp;P 500 has returned ~10%/yr before inflation (~7% after) over the long run; future returns are not guaranteed and inflation reduces the real value of these figures. Tax savings assume your contributions qualify: Traditional shows the up-front deduction at your marginal rate; Roth shows the tax you'd otherwise owe on the tax-free growth. A projection for planning — not investment advice.</p>
   </div>
  </div>
 </section>
@@ -1059,6 +1068,7 @@
  var g=function(id){return document.getElementById(id);};
  if(!g('irChart')) return;
  var ov={cur:null,mon:null,yr:null,rate:null,inc:null};
+ var iraType='trad';
  var fmt=function(n){return '$'+Math.round(n).toLocaleString('en-US');};
  var fmtShort=function(n){ if(n>=1e9) return '$'+(n/1e9).toFixed(1)+'B'; if(n>=1e6) return '$'+(n/1e6).toFixed(n>=1e7?0:1)+'M'; if(n>=1e3) return '$'+Math.round(n/1e3)+'k'; return '$'+Math.round(n); };
  var W=360,H=150,padL=36,padR=10,padT=12,padB=22;
@@ -1071,6 +1081,9 @@
   var target=income*25;
   var pts=project(P,monthly,years,rate),last=pts[pts.length-1],maxY=Math.max(last.bal,target,1);
   g('irTotal').textContent=fmt(last.bal); g('irContrib').textContent=fmt(last.con); g('irGrowth').textContent='+'+fmt(last.bal-last.con);
+  var taxRate=(+g('irTaxRate').value)/100, contribs=monthly*12*years, growth=last.bal-last.con;
+  g('irTax').textContent=fmt(iraType==='roth'?growth*taxRate:contribs*taxRate);
+  g('irTaxK').textContent=iraType==='roth'?'Tax savings (Roth)':'Tax savings (Traditional)';
   var x=function(yr){return padL+(yr/years)*(W-padL-padR);}, y=function(v){return H-padB-(v/maxY)*(H-padT-padB);};
   var tp=pts.map(function(p){return x(p.y)+','+y(p.bal);}), cp=pts.map(function(p){return x(p.y)+','+y(p.con);}), baseY=y(0);
   g('irLineTotal').setAttribute('d','M'+tp.join(' L')); g('irLineCon').setAttribute('d','M'+cp.join(' L'));
@@ -1103,6 +1116,8 @@
  }
  var ovKey={irCur:'cur',irMon:'mon',irYr:'yr',irRate:'rate',irInc:'inc'};
  ['irCur','irMon','irYr','irRate','irInc'].forEach(function(id){ g(id).addEventListener('input',function(){ ov[ovKey[id]]=null; redraw(); }); });
+ g('irTaxRate').addEventListener('change',redraw);
+ Array.prototype.forEach.call(document.querySelectorAll('.ira-opt'),function(btn){ btn.addEventListener('click',function(){ iraType=btn.getAttribute('data-ira'); Array.prototype.forEach.call(document.querySelectorAll('.ira-opt'),function(b){b.classList.remove('active');}); btn.classList.add('active'); redraw(); }); });
  function num(s){ var v=parseFloat(String(s).replace(/[^0-9.]/g,'')); return isNaN(v)?null:v; }
  function clampSlider(id,v){ var el=g(id); if(id==='irCur'){ var pos=Math.round(1000*Math.log(Math.min(v,100000000)+1)/Math.log(100000001)); el.value=Math.max(0,Math.min(1000,pos)); } else { el.value=Math.max(+el.min,Math.min(+el.max,v)); } }
  function attachEdit(labelId,sliderId,key,isRate){ var b=g(labelId); b.title='Double-click to type any value'; b.style.cursor='pointer'; b.addEventListener('dblclick',function(){ var inp=document.createElement('input'); inp.type='text'; inp.value=String(num(b.textContent)||''); inp.style.cssText='width:96px;font:inherit;color:var(--text);background:var(--surface-2);border:1px solid var(--primary);border-radius:6px;padding:1px 6px'; b.textContent=''; b.appendChild(inp); inp.focus(); inp.select(); var done=false; function commit(){ if(done)return; done=true; var v=num(inp.value); if(v!=null&&v>=0){ ov[key]=isRate?v:Math.round(v); clampSlider(sliderId,ov[key]); } redraw(); } inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){commit();} else if(e.key==='Escape'){done=true;redraw();} }); inp.addEventListener('blur',commit); }); }
