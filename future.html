@@ -918,7 +918,7 @@
     <div><span class="rs-k">Projected balance</span><span class="rs-v" id="irTotal">$0</span></div>
     <div><span class="rs-k">You contribute</span><span class="rs-v con" id="irContrib">$0</span></div>
     <div><span class="rs-k">Growth</span><span class="rs-v grw" id="irGrowth">+$0</span></div>
-    <div><span class="rs-k" id="irTaxK">Tax savings (Traditional)</span><span class="rs-v" id="irTax" style="color:#22C55E">$0</span></div>
+    <div><span class="rs-k" id="irTaxK">Tax saved on contributions</span><span class="rs-v" id="irTax" style="color:#22C55E">$0</span></div>
    </div>
   </div>
   <div class="roadmap-widget">
@@ -955,7 +955,7 @@
     <div class="rw-ctrl"><div class="rw-top"><span>Marginal tax rate</span></div><select id="irTaxRate" class="ira-select"><option value="10">10%</option><option value="12">12%</option><option value="22" selected>22%</option><option value="24">24%</option><option value="32">32%</option><option value="35">35%</option><option value="37">37%</option></select></div>
    </div>
    <div id="irVerdict" class="rw-verdict" hidden></div>
-   <p class="rw-note">Assumes monthly compounding and steady contributions. The S&amp;P 500 has returned ~10%/yr before inflation (~7% after) over the long run; future returns are not guaranteed and inflation reduces the real value of these figures. Tax savings assume your contributions qualify: Traditional shows the up-front deduction at your marginal rate; Roth shows the tax you'd otherwise owe on the tax-free growth. A projection for planning — not investment advice.</p>
+   <p class="rw-note">Assumes monthly compounding and steady contributions. The S&amp;P 500 has returned ~10%/yr before inflation (~7% after) over the long run; future returns are not guaranteed and inflation reduces the real value of these figures. The tax figure is the cumulative total over your time horizon and assumes your contributions qualify: Traditional shows the deduction on the money you add (your marginal rate × contributions); Roth shows the tax you'd otherwise owe on the tax-free growth. A projection for planning — not investment advice.</p>
   </div>
  </div>
 </section>
@@ -1083,7 +1083,7 @@
   g('irTotal').textContent=fmt(last.bal); g('irContrib').textContent=fmt(last.con); g('irGrowth').textContent='+'+fmt(last.bal-last.con);
   var taxRate=(+g('irTaxRate').value)/100, contribs=monthly*12*years, growth=last.bal-last.con;
   g('irTax').textContent=fmt(iraType==='roth'?growth*taxRate:contribs*taxRate);
-  g('irTaxK').textContent=iraType==='roth'?'Tax savings (Roth)':'Tax savings (Traditional)';
+  g('irTaxK').textContent=iraType==='roth'?'Tax saved on growth':'Tax saved on contributions';
   var x=function(yr){return padL+(yr/years)*(W-padL-padR);}, y=function(v){return H-padB-(v/maxY)*(H-padT-padB);};
   var tp=pts.map(function(p){return x(p.y)+','+y(p.bal);}), cp=pts.map(function(p){return x(p.y)+','+y(p.con);}), baseY=y(0);
   g('irLineTotal').setAttribute('d','M'+tp.join(' L')); g('irLineCon').setAttribute('d','M'+cp.join(' L'));
