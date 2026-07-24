@@ -170,6 +170,7 @@
  .nav-links a{font-size:14px;color:var(--text-muted);font-weight:500;transition:color 0.2s}
  .nav-links a:hover{color:var(--text)}
  .nav-cta{display:flex;gap:10px;align-items:center}
+ .nav-signin-m{display:none}
  /* Theme toggle in nav (top-right) */
  .nav-theme{position:fixed;bottom:22px;right:22px;z-index:200;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--surface);color:var(--text);border:1px solid var(--border-strong);box-shadow:0 10px 28px -10px rgba(20,24,42,0.30);transition:transform 0.15s,border-color 0.2s,background 0.2s}
  .nav-theme:hover{color:var(--primary);border-color:var(--primary);transform:translateY(-2px)}
@@ -766,7 +767,8 @@
  @media (max-width:960px){
  :root{--gutter:20px;--section:72px}
  .nav-links{display:none}
- .nav-cta .btn-ghost{display:inline-flex}
+ .nav-cta .btn-ghost{display:none}
+ .nav-signin-m{display:block}
  .hero-inner{grid-template-columns:1fr;gap:64px}
  .hero-visual{height:520px}
  .phone{width:220px}
@@ -868,6 +870,7 @@
  <a href="https://demo.visionfinance.app" target="_blank" rel="noopener">Demo Site</a>
  <a href="pricing.html">Pricing</a>
  <a href="download.html" aria-current="page" style="color:var(--primary)">Download</a>
+ <a href="https://visionfinance.app/login" class="nav-signin-m">Sign in</a>
  </div>
  <div class="nav-cta">
  <a href="https://visionfinance.app/login" class="btn btn-ghost">Sign in</a>
